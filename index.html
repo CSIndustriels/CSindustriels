@@ -1,66 +1,193 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+
 <meta charset="UTF-8">
-
-<style>
-body {
-    font-family: Arial, sans-serif;
-    max-width: 1000px;
-    margin: auto;
-    padding: 40px;
-}
-
-h1 {
-    color: #003366;
-    font-size: 48px;
-}
-
-h2 {
-    color: #0055AA;
-}
-
-li {
-    margin-bottom: 8px;
-}
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Côté Systèmes Industriels</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:"Segoe UI",Arial,sans-serif;
+    background:#f3f5f8;
+    color:#222;
+}
+
+.hero{
+    background:linear-gradient(135deg,#00172d,#003f7d,#0066cc);
+    color:white;
+    text-align:center;
+    padding:60px 20px 80px;
+}
+
+.banner{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:30px;
+    flex-wrap:wrap;
+    margin-bottom:35px;
+}
+
+.banner img{
+    height:90px;
+
+    filter:
+        brightness(0)
+        invert(1);
+
+    opacity:.95;
+}
+
+.company{
+    font-size:72px;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:5px;
+    text-shadow:
+    0 0 20px rgba(255,255,255,.18);
+}
+
+.accent{
+    color:#9fd2ff;
+}
+
+.subtitle{
+    margin-top:20px;
+    font-size:24px;
+    color:#dbe8ff;
+}
+
+.section{
+    max-width:1200px;
+    margin:auto;
+    padding:60px 25px;
+}
+
+.section h2{
+    color:#003366;
+    border-bottom:4px solid #0066cc;
+    padding-bottom:12px;
+}
+
+.services{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:20px;
+}
+
+.service{
+    background:white;
+    padding:22px;
+    border-radius:12px;
+    box-shadow:0 4px 15px rgba(0,0,0,.12);
+    font-weight:600;
+    transition:.2s;
+}
+
+.service:hover{
+    transform:translateY(-3px);
+}
+
+.contact{
+    background:#002240;
+    color:white;
+    text-align:center;
+    padding:60px 25px;
+}
+
+.contact h2{
+    color:white;
+    border:none;
+}
+
+.footerline{
+    width:120px;
+    height:4px;
+    background:#66b3ff;
+    margin:20px auto;
+}
+
+</style>
 
 </head>
 
 <body>
 
-<h1>Côté Systèmes Industriels</h1>
+<section class="hero">
 
-<h2>Automatisation industrielle</h2>
+<div class="banner">
 
-<p>
-Conception électrique, programmation PLC, intégration de systèmes et mise en service.
-</p>
+<img src="industrie.png">
+
+<img src="puce.png">
+
+</div>
+
+<div class="company">
+Côté <span class="accent">Systèmes</span> Industriels
+</div>
+
+<div class="subtitle">
+Automatisation industrielle • Conception électrique • Robotique • Contrôle • Intégration
+</div>
+
+</section>
+
+<section class="section">
 
 <h2>Services</h2>
 
-<ul>
-<li>Programmation PLC</li>
-<li>Conception électrique</li>
-<li>Panneaux de contrôle</li>
-<li>Robotique</li>
-<li>Bancs d'essai sur mesure</li>
-<li>Dépannage industriel</li>
-<li>Modification de machine</li>
-<li>Mise en service</li>
-<li>Documentation technique</li>
-<li>Conception de PCB</li>
-</ul>
+<div class="services">
+
+<div class="service">Programmation PLC</div>
+
+<div class="service">Conception électrique</div>
+
+<div class="service">Panneaux de contrôle</div>
+
+<div class="service">Robotique industrielle</div>
+
+<div class="service">Bancs d'essai sur mesure</div>
+
+<div class="service">Intégration de systèmes</div>
+
+<div class="service">Modification de machine</div>
+
+<div class="service">Dépannage industriel</div>
+
+<div class="service">Documentation technique</div>
+
+<div class="service">Conception de PCB</div>
+
+</div>
+
+</section>
+
+<section class="contact">
 
 <h2>Contact</h2>
 
+<div class="footerline"></div>
+
 <p>
-<strong>Vincent Côté</strong><br>
+
+<strong>Vincent Côté</strong><br><br>
+
 vincent@csindustriels.com<br>
-514-679-0850
+
+514‑679‑0850
+
 </p>
+
+</section>
 
 </body>
 </html>
