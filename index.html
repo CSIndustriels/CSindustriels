@@ -44,10 +44,11 @@ body{
 
 .company-row{
     display:flex;
-    flex-direction:column;
+    flex-direction:row;
     justify-content:center;
     align-items:center;
-    gap:20px;
+    gap:30px;
+    flex-wrap:wrap;
 }
 
 .company{
@@ -63,19 +64,20 @@ body{
 }
 
 .logo-csi{
-    width:150px;
-    height:150px;
+    width:140px;
+    height:140px;
+    flex-shrink:0;
     border-radius:50%;
-    background:#1a237e;
+    background:radial-gradient(circle at 35% 30%,#2f3a9e,#1a237e 70%);
     display:flex;
     justify-content:center;
     align-items:center;
-    box-shadow:0 6px 20px rgba(0,0,0,.4);
+    box-shadow:0 6px 20px rgba(0,0,0,.45);
 }
 
 .logo-csi svg{
-    width:110px;
-    height:55px;
+    width:100px;
+    height:56px;
 }
 
 .subtitle{
@@ -156,19 +158,19 @@ body{
 
 <div class="company-row">
 
-<div class="logo-csi">
-<svg viewBox="0 0 180 90" fill="none" stroke="#f4f4f4" stroke-width="14" stroke-linejoin="miter">
-    <!-- C -->
-    <path d="M55 27 A28 28 0 1 0 55 63"/>
-    <!-- S -->
-    <path d="M115 22 C105 14 82 16 82 34 C82 48 115 44 115 60 C115 78 92 80 82 70"/>
-    <!-- I -->
-    <rect x="143" y="10" width="14" height="70" fill="#f4f4f4" stroke="none"/>
-</svg>
-</div>
-
 <div class="company">
 Côté <span class="accent">Systèmes</span> Industriels
+</div>
+
+<div class="logo-csi">
+<svg viewBox="0 0 162 90" role="img" aria-label="CSI" fill="#f5f5f5">
+    <!-- C -->
+    <path d="M56 12.8 A36 36 0 1 0 56 77.2 L56 60.1 A22 22 0 1 1 56 29.9 Z"/>
+    <!-- S (éclair) -->
+    <polygon points="100,6 118,10 108,38 124,38 90,86 98,50 80,50"/>
+    <!-- I (avec empattements) -->
+    <path d="M132 10 H158 V19 H150 V71 H158 V80 H132 V71 H140 V19 H132 Z"/>
+</svg>
 </div>
 
 </div>
