@@ -6,44 +6,43 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Côté Systèmes Industriels</title>
+<title>CSI | Côté Systèmes Industriels</title>
 
 <style>
 
 *{
+    margin:0;
+    padding:0;
     box-sizing:border-box;
 }
 
 body{
-    margin:0;
-    font-family:Segoe UI,Arial,sans-serif;
-    background:#f3f5f8;
+    font-family:Segoe UI, Arial, sans-serif;
+    background:#f4f6f8;
     color:#222;
 }
 
 .hero{
-    background:linear-gradient(135deg,#00172d,#003f7d,#0066cc);
+    background:linear-gradient(135deg,#001428,#003a73,#0063c7);
     color:white;
     text-align:center;
-    padding:50px 20px 80px;
+    padding:40px 20px 80px;
 }
 
 .banner{
     display:flex;
     justify-content:center;
     align-items:center;
-    gap:40px;
+    gap:30px;
     flex-wrap:wrap;
-    margin-bottom:30px;
+    margin-bottom:40px;
 }
 
 .banner img{
     height:120px;
-    background:white;
-    padding:10px;
-    border-radius:10px;
 }
-.logo-row{
+
+.company-row{
     display:flex;
     justify-content:center;
     align-items:center;
@@ -51,45 +50,28 @@ body{
     flex-wrap:wrap;
 }
 
-.csi-logo{
-
-    width:120px;
-    height:120px;
-
-    border:3px solid #9fd2ff;
-    border-radius:18px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    font-size:38px;
-    font-weight:900;
-
-    background:rgba(255,255,255,0.08);
-
-    box-shadow:
-    0 0 20px rgba(255,255,255,.15);
-
-    color:white;
-}
 .company{
-    font-size:68px;
+    font-size:56px;
     font-weight:900;
     text-transform:uppercase;
-    letter-spacing:4px;
-    text-shadow:
-    0 0 20px rgba(255,255,255,.15);
+    letter-spacing:2px;
 }
 
 .accent{
     color:#9fd2ff;
 }
 
+.csi{
+    font-size:48px;
+    font-weight:900;
+    color:#9fd2ff;
+    letter-spacing:4px;
+}
+
 .subtitle{
-    margin-top:20px;
-    font-size:24px;
-    color:#dbe8ff;
+    margin-top:25px;
+    font-size:22px;
+    color:#dce9ff;
 }
 
 .section{
@@ -102,25 +84,21 @@ body{
     color:#003366;
     border-bottom:4px solid #0066cc;
     padding-bottom:12px;
+    margin-bottom:25px;
 }
 
 .services{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
     gap:20px;
 }
 
 .service{
     background:white;
-    padding:22px;
+    padding:20px;
     border-radius:12px;
-    box-shadow:0 4px 15px rgba(0,0,0,.12);
+    box-shadow:0 4px 15px rgba(0,0,0,.10);
     font-weight:600;
-    transition:.2s;
-}
-
-.service:hover{
-    transform:translateY(-3px);
 }
 
 .contact{
@@ -136,10 +114,16 @@ body{
 }
 
 .footerline{
-    width:120px;
+    width:140px;
     height:4px;
     background:#66b3ff;
     margin:20px auto;
+}
+
+.jobtitle{
+    color:#9fd2ff;
+    margin-top:8px;
+    font-size:18px;
 }
 
 </style>
@@ -160,8 +144,16 @@ body{
 
 </div>
 
+<div class="company-row">
+
 <div class="company">
 Côté <span class="accent">Systèmes</span> Industriels
+</div>
+
+<div class="csi">
+CSI
+</div>
+
 </div>
 
 <div class="subtitle">
@@ -177,44 +169,15 @@ Automatisation industrielle • Conception électrique • Robotique • Contrô
 <div class="services">
 
 <div class="service">Programmation PLC</div>
+
 <div class="service">Conception électrique</div>
+
 <div class="service">Panneaux de contrôle</div>
+
 <div class="service">Robotique industrielle</div>
+
 <div class="service">Bancs d'essai sur mesure</div>
+
 <div class="service">Intégration de systèmes</div>
-<div class="service">Modification de machine</div>
-<div class="service">Dépannage industriel</div>
-<div class="service">Documentation technique</div>
-<div class="service">Conception de PCB</div>
 
-</div>
-
-</section>
-
-<section class="contact">
-
-<h2>Contact</h2>
-
-<div class="footerline"></div>
-
-<p>
-
-<strong>Vincent Côté</strong><br>
-
-<span style="color:#9fd2ff;">
-Technicien en électronique industrielle et automatisation
-</span>
-
-<br><br>
-
-vincent@CSIndustriels.com<br>
-
-514-679-0850
-
-</p>
-
-</section>
-
-</body>
-
-</html>
+<div class="service">
