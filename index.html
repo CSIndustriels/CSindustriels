@@ -22,24 +22,51 @@ body{
     color:#222;
 }
 
+/* Rectangle bleu du haut : fond avec halos lumineux, décor en arrière-plan */
 .hero{
-    background:linear-gradient(135deg,#001428,#003a73,#0063c7);
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 18% 22%, rgba(0,170,255,.35), transparent 42%),
+        radial-gradient(circle at 85% 80%, rgba(0,210,255,.28), transparent 46%),
+        linear-gradient(135deg,#001428,#003a73,#0063c7);
     color:white;
     text-align:center;
     padding:40px 20px 80px;
+}
+
+/* Tout le contenu passe devant le décor */
+.hero > *{
+    position:relative;
+    z-index:1;
+}
+
+/* Décor : couvre tout le rectangle bleu */
+.hero > .hero-decor{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:0;
+    pointer-events:none;
 }
 
 .banner{
     display:flex;
     justify-content:center;
     align-items:center;
-    gap:30px;
+    gap:50px;
     flex-wrap:wrap;
     margin-bottom:40px;
 }
 
-.banner img{
-    height:120px;
+/* Les trois illustrations du haut (sans cadre, avec lueur) */
+.banner svg{
+    height:130px;
+    width:auto;
+    color:#9fd2ff;
+    filter:drop-shadow(0 0 10px rgba(120,200,255,.55));
 }
 
 .company-row{
@@ -70,7 +97,7 @@ body{
     color:#9fd2ff;
 }
 
-
+/* Conteneur du logo, centré */
 .logo-csi{
     flex-shrink:0;
     display:flex;
@@ -78,10 +105,11 @@ body{
     align-items:center;
 }
 
+/* Taille du logo et ombre portée (changer 180px pour agrandir ou réduire) */
 .logo-csi svg{
     width:180px;
     height:180px;
-    filter:drop-shadow(0 6px 14px rgba(0,0,0,.5));
+    filter:drop-shadow(0 8px 18px rgba(0,0,0,.55));
 }
 
 .subtitle{
@@ -150,13 +178,175 @@ body{
 
 <section class="hero">
 
+<!-- Décor de fond du rectangle bleu -->
+<svg class="hero-decor" viewBox="0 0 1200 520" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+        <!-- Grille fine -->
+        <pattern id="csi-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M40 0 H0 V40" fill="none" stroke="#ffffff" stroke-opacity=".05" stroke-width="1"/>
+        </pattern>
+
+        <!-- Engrenage (dents faites avec des tirets) -->
+        <g id="csi-gear" fill="none" stroke="currentColor">
+            <circle r="44" stroke-width="10" stroke-dasharray="7.68 7.68"/>
+            <circle r="38" stroke-width="3"/>
+            <circle r="22" stroke-width="2"/>
+            <circle r="8" stroke-width="2"/>
+            <path stroke-width="2" d="M0 -22 V-8 M0 22 V8 M-22 0 H-8 M22 0 H8 M15.5 -15.5 L5.7 -5.7 M-15.5 15.5 L-5.7 5.7 M15.5 15.5 L5.7 5.7 M-15.5 -15.5 L-5.7 -5.7"/>
+        </g>
+
+        <!-- Puce électronique avec pattes -->
+        <g id="csi-chip" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="0" y="0" width="70" height="70" rx="6"/>
+            <rect x="18" y="18" width="34" height="34" rx="3"/>
+            <circle cx="9" cy="9" r="2"/>
+            <path d="M14 -8 V0 M26 -8 V0 M38 -8 V0 M50 -8 V0 M62 -8 V0
+                     M14 70 V78 M26 70 V78 M38 70 V78 M50 70 V78 M62 70 V78
+                     M-8 14 H0 M-8 26 H0 M-8 38 H0 M-8 50 H0 M-8 62 H0
+                     M70 14 H78 M70 26 H78 M70 38 H78 M70 50 H78 M70 62 H78"/>
+        </g>
+
+        <!-- Bus de pistes PCB : 3 pistes parallèles, coudes à 45°, pastilles -->
+        <g id="csi-bus">
+            <g fill="none" stroke="currentColor" stroke-width="3">
+                <path d="M0 400 H130 L170 440 H300"/>
+                <path d="M0 412 H125 L165 452 H300"/>
+                <path d="M0 424 H120 L160 464 H300"/>
+            </g>
+            <g fill="currentColor">
+                <circle cx="300" cy="440" r="5"/>
+                <circle cx="300" cy="452" r="5"/>
+                <circle cx="300" cy="464" r="5"/>
+            </g>
+            <g fill="#003a73">
+                <circle cx="300" cy="440" r="2"/>
+                <circle cx="300" cy="452" r="2"/>
+                <circle cx="300" cy="464" r="2"/>
+            </g>
+        </g>
+
+        <radialGradient id="csi-center" cx=".5" cy=".5" r=".5">
+            <stop offset="0" stop-color="#4fc3f7" stop-opacity=".25"/>
+            <stop offset="1" stop-color="#4fc3f7" stop-opacity="0"/>
+        </radialGradient>
+    </defs>
+
+    <!-- Grille et halo central -->
+    <rect width="1200" height="520" fill="url(#csi-grid)"/>
+    <circle cx="600" cy="260" r="320" fill="url(#csi-center)"/>
+    <circle cx="600" cy="260" r="300" fill="none" stroke="#ffffff" stroke-opacity=".05"/>
+    <circle cx="600" cy="260" r="220" fill="none" stroke="#ffffff" stroke-opacity=".05"/>
+
+    <!-- Engrenages qui s'engrènent (haut gauche) -->
+    <g style="color:#9fd2ff" opacity=".2">
+        <use href="#csi-gear" transform="translate(110,90) scale(1.5)"/>
+        <use href="#csi-gear" transform="translate(222,152) rotate(10) scale(.9)"/>
+    </g>
+
+    <!-- Engrenages (bas droite) -->
+    <g style="color:#9fd2ff" opacity=".2">
+        <use href="#csi-gear" transform="translate(1090,430) scale(2)"/>
+        <use href="#csi-gear" transform="translate(955,360) rotate(10) scale(1)"/>
+    </g>
+
+    <!-- Bus de pistes PCB : bas gauche et haut droite -->
+    <g style="color:#9fd2ff" opacity=".22">
+        <use href="#csi-bus"/>
+        <use href="#csi-bus" transform="translate(1200,520) rotate(180)"/>
+    </g>
+
+    <!-- Puces électroniques -->
+    <g style="color:#9fd2ff" opacity=".18">
+        <use href="#csi-chip" transform="translate(50,235)"/>
+        <use href="#csi-chip" transform="translate(1080,205)"/>
+    </g>
+
+    <!-- Petits points et croix répartis -->
+    <g fill="#9fd2ff" opacity=".35">
+        <circle cx="330" cy="60" r="3"/>
+        <circle cx="520" cy="470" r="3"/>
+        <circle cx="880" cy="40" r="3"/>
+        <circle cx="700" cy="480" r="3"/>
+        <circle cx="400" cy="330" r="2.5"/>
+        <circle cx="820" cy="200" r="2.5"/>
+    </g>
+    <g stroke="#9fd2ff" stroke-width="2" opacity=".3">
+        <path d="M420 120 h14 M427 113 v14"/>
+        <path d="M780 400 h14 M787 393 v14"/>
+        <path d="M640 40 h14 M647 33 v14"/>
+        <path d="M260 300 h14 M267 293 v14"/>
+    </g>
+</svg>
+
+<!-- Les trois illustrations (remplacent les images PNG) -->
 <div class="banner">
 
-<img src="bras gear.png" alt="Bras robotique">
+    <!-- Bras robotique -->
+    <svg viewBox="0 0 160 120" fill="#0a3f7c" stroke="#9fd2ff" stroke-width="2"
+         stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Bras robotique">
+        <rect x="45" y="102" width="70" height="10" rx="3"/>
+        <rect x="68" y="82" width="24" height="20" rx="3"/>
+        <!-- Segments du bras (trait clair large, puis trait foncé plus fin) -->
+        <path d="M80 80 L48 42" stroke-width="11"/>
+        <path d="M80 80 L48 42" stroke="#0a3f7c" stroke-width="6"/>
+        <path d="M48 42 L102 22" stroke-width="10"/>
+        <path d="M48 42 L102 22" stroke="#0a3f7c" stroke-width="5"/>
+        <!-- Articulations -->
+        <circle cx="80" cy="80" r="8"/>
+        <circle cx="48" cy="42" r="8"/>
+        <circle cx="102" cy="22" r="6"/>
+        <circle cx="80" cy="80" r="2.5" fill="#9fd2ff" stroke="none"/>
+        <circle cx="48" cy="42" r="2.5" fill="#9fd2ff" stroke="none"/>
+        <!-- Pince -->
+        <path d="M106 20 L120 14 M106 24 L120 32" fill="none" stroke-width="3"/>
+        <!-- Petit engrenage décoratif -->
+        <use href="#csi-gear" transform="translate(26,30) scale(.3)" fill="none" stroke="#9fd2ff"/>
+    </svg>
 
-<img src="covoyeur.png" alt="Convoyeur">
+    <!-- Convoyeur avec boîtes -->
+    <svg viewBox="0 0 160 120" fill="#0a3f7c" stroke="#9fd2ff" stroke-width="2"
+         stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Convoyeur">
+        <rect x="10" y="72" width="140" height="16" rx="8"/>
+        <circle cx="22" cy="80" r="4"/>
+        <circle cx="58" cy="80" r="4"/>
+        <circle cx="94" cy="80" r="4"/>
+        <circle cx="130" cy="80" r="4"/>
+        <path d="M32 88 V108 M128 88 V108 M22 108 H42 M118 108 H138" fill="none"/>
+        <!-- Boîtes -->
+        <rect x="26" y="50" width="28" height="22"/>
+        <path d="M40 50 V72" fill="none"/>
+        <rect x="70" y="56" width="22" height="16"/>
+        <path d="M81 56 V72" fill="none"/>
+        <rect x="108" y="44" width="30" height="28"/>
+        <path d="M123 44 V72" fill="none"/>
+        <!-- Flèche de déplacement -->
+        <path d="M20 28 H56 M48 21 L56 28 L48 35" fill="none" stroke="#4fc3f7" stroke-width="3"/>
+    </svg>
 
-<img src="board.png" alt="Carte électronique">
+    <!-- Carte électronique -->
+    <svg viewBox="0 0 160 120" fill="#0a3f7c" stroke="#9fd2ff" stroke-width="2"
+         stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Carte électronique">
+        <rect x="20" y="15" width="120" height="90" rx="6"/>
+        <!-- Trous de fixation -->
+        <circle cx="30" cy="25" r="3" fill="none"/>
+        <circle cx="130" cy="25" r="3" fill="none"/>
+        <circle cx="30" cy="95" r="3" fill="none"/>
+        <circle cx="130" cy="95" r="3" fill="none"/>
+        <!-- Puce centrale et pattes -->
+        <rect x="60" y="40" width="40" height="40" rx="3" fill="#0b2a52"/>
+        <path d="M66 34 V40 M73 34 V40 M80 34 V40 M87 34 V40 M94 34 V40
+                 M66 80 V86 M73 80 V86 M80 80 V86 M87 80 V86 M94 80 V86
+                 M54 46 H60 M54 53 H60 M54 60 H60 M54 67 H60 M54 74 H60
+                 M100 46 H106 M100 53 H106 M100 60 H106 M100 67 H106 M100 74 H106" fill="none"/>
+        <!-- Pistes avec coudes à 45° -->
+        <path d="M54 53 H40 L32 61 V80 M54 67 H44 L36 75 V90" fill="none" stroke="#4fc3f7"/>
+        <path d="M106 53 H120 L128 45 V32 M106 67 H116 L124 75 V90" fill="none" stroke="#4fc3f7"/>
+        <!-- Pastilles -->
+        <circle cx="32" cy="80" r="3" fill="#9fd2ff"/>
+        <circle cx="36" cy="90" r="3" fill="#9fd2ff"/>
+        <circle cx="128" cy="32" r="3" fill="#9fd2ff"/>
+        <circle cx="124" cy="90" r="3" fill="#9fd2ff"/>
+    </svg>
 
 </div>
 
@@ -165,23 +355,6 @@ body{
 <div class="company">
 Côté <span class="accent">Systèmes</span> Industriels
 </div>
-
-<style>
-/* Conteneur du logo, centré */
-.logo-csi{
-    flex-shrink:0;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
-
-/* Taille du logo et ombre portée (changer 180px pour agrandir ou réduire) */
-.logo-csi svg{
-    width:180px;
-    height:180px;
-    filter:drop-shadow(0 8px 18px rgba(0,0,0,.55));
-}
-</style>
 
 <div class="logo-csi">
 <svg viewBox="0 0 200 200" role="img" aria-label="CSI">
@@ -336,7 +509,7 @@ Côté <span class="accent">Systèmes</span> Industriels
 
 </svg>
 </div>
-    
+
 </div>
 
 <div class="subtitle">
