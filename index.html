@@ -167,11 +167,11 @@ Côté <span class="accent">Systèmes</span> Industriels
     align-items:center;
 }
 
-/* Taille du logo et ombre portée (changer 180px pour agrandir ou réduire tout le logo) */
+/* Taille du logo et ombre portée (changer 180px pour agrandir ou réduire) */
 .logo-csi svg{
     width:180px;
     height:180px;
-    filter:drop-shadow(0 6px 14px rgba(0,0,0,.5));
+    filter:drop-shadow(0 8px 18px rgba(0,0,0,.55));
 }
 </style>
 
@@ -179,44 +179,110 @@ Côté <span class="accent">Systèmes</span> Industriels
 <svg viewBox="0 0 200 200" role="img" aria-label="CSI">
 
     <defs>
-        <!-- Zone circulaire qui découpe le fond bleu et blanc -->
+        <!-- Zone circulaire qui découpe le fond -->
         <clipPath id="csi-clip">
             <circle cx="100" cy="100" r="84"/>
         </clipPath>
+
+        <!-- Dégradé de l'anneau extérieur -->
+        <linearGradient id="csi-ring" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#3949ab"/>
+            <stop offset="1" stop-color="#0d1450"/>
+        </linearGradient>
+
+        <!-- Dégradé de la moitié bleue -->
+        <linearGradient id="csi-blue" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#3b4cc0"/>
+            <stop offset="1" stop-color="#1a237e"/>
+        </linearGradient>
+
+        <!-- Dégradé de la moitié blanche -->
+        <linearGradient id="csi-white" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#ffffff"/>
+            <stop offset="1" stop-color="#dfe8ff"/>
+        </linearGradient>
+
+        <!-- Reflet vitré en haut du logo -->
+        <linearGradient id="csi-gloss" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#ffffff" stop-opacity=".35"/>
+            <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+        </linearGradient>
+
+        <!-- Dégradé de l'éclair -->
+        <linearGradient id="csi-bolt" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#ffffff"/>
+            <stop offset="1" stop-color="#fff3b0"/>
+        </linearGradient>
+
+        <!-- Dégradé de l'étoile -->
+        <radialGradient id="csi-star" cx=".4" cy=".35" r=".8">
+            <stop offset="0" stop-color="#4caf50"/>
+            <stop offset="1" stop-color="#1b5e20"/>
+        </radialGradient>
+
+        <!-- Lueur jaune autour de l'éclair -->
+        <filter id="csi-glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="2.5" result="blur"/>
+            <feMerge>
+                <feMergeNode in="blur"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
     </defs>
 
-    <!-- Anneau extérieur bleu foncé -->
-    <circle cx="100" cy="100" r="98" fill="#1a237e"/>
+    <!-- Anneau extérieur en dégradé -->
+    <circle cx="100" cy="100" r="98" fill="url(#csi-ring)"/>
+
+    <!-- Arc lumineux cyan sur l'anneau -->
+    <circle cx="100" cy="100" r="94" fill="none" stroke="#4fc3f7" stroke-width="2"
+            stroke-linecap="round" stroke-dasharray="150 441" transform="rotate(-160 100 100)"/>
 
     <!-- Fin trait blanc autour du cercle -->
     <circle cx="100" cy="100" r="90" fill="none" stroke="#ffffff" stroke-width="2.5"/>
 
     <!-- Fond du cercle : moitié bleue à gauche, moitié blanche à droite -->
     <g clip-path="url(#csi-clip)">
-        <rect x="0" y="0" width="200" height="200" fill="#283593"/>
+        <rect x="0" y="0" width="200" height="200" fill="url(#csi-blue)"/>
         <!-- x="124" = position de la séparation bleu / blanc -->
-        <rect x="124" y="0" width="80" height="200" fill="#ffffff"/>
+        <rect x="124" y="0" width="80" height="200" fill="url(#csi-white)"/>
+
+        <!-- Ligne lumineuse sur la séparation -->
+        <rect x="123" y="0" width="2" height="200" fill="#9fd2ff" opacity=".6"/>
+
+        <!-- Lignes de circuit imprimé (partie bleue) -->
+        <g fill="none" stroke="#9fa8da" stroke-width="1.2" opacity=".4">
+            <path d="M30 58 H60 L68 50 H100"/>
+            <path d="M34 146 H66 L74 154 H108"/>
+        </g>
+        <g fill="#9fa8da" opacity=".5">
+            <circle cx="100" cy="50" r="2"/>
+            <circle cx="108" cy="154" r="2"/>
+            <circle cx="30" cy="58" r="2"/>
+            <circle cx="34" cy="146" r="2"/>
+        </g>
+
+        <!-- Reflet vitré -->
+        <ellipse cx="100" cy="38" rx="72" ry="40" fill="url(#csi-gloss)"/>
     </g>
 
-    <!-- Lettre C : arc fin blanc (scale = taille de la lettre) -->
+    <!-- Lettre C : arc fin blanc -->
     <path transform="translate(60,100) scale(1.15) translate(-60,-100)" fill="#f5f5f5"
           d="M76 72.8 A27.5 27.5 0 1 0 76 127.2 L76 122.1 A22.5 22.5 0 1 1 76 77.9 Z"/>
 
-    <!-- Lettre S : éclair blanc avec contour jaune -->
-    <polygon transform="translate(16.2,58.4) scale(.9)"
+    <!-- Lettre S : éclair avec contour jaune et lueur -->
+    <polygon transform="translate(16.2,58.4) scale(.9)" filter="url(#csi-glow)"
              points="86,6 104,6 100,34 116,34 94,86 96,54 80,54"
-             fill="#f5f5f5" stroke="#ffe600" stroke-width="3.5" stroke-linejoin="round"/>
+             fill="url(#csi-bolt)" stroke="#ffe600" stroke-width="3.5" stroke-linejoin="round"/>
 
-    <!-- Lettre I : blanc avec contour bleu, sur la partie blanche -->
+    <!-- Lettre I : contour bleu sur la partie blanche -->
     <path transform="translate(31.3,64) scale(.8)"
           d="M126 10 H152 V19 H144 V71 H152 V80 H126 V71 H134 V19 H126 Z"
           fill="#f5f5f5" stroke="#1a237e" stroke-width="3" stroke-linejoin="miter"/>
 
-    <!-- Étoile verte (forêt) avec contour jaune -->
-    <!-- translate(168,100) = position, scale(1.3) = taille, fill = couleur -->
+    <!-- Étoile verte avec contour jaune -->
     <polygon transform="translate(168,100) scale(1.3)"
              points="0,-10 2.35,-3.24 9.51,-3.09 3.8,1.24 5.88,8.09 0,4 -5.88,8.09 -3.8,1.24 -9.51,-3.09 -2.35,-3.24"
-             fill="#228b22" stroke="#ffd600" stroke-width="1.2" stroke-linejoin="round"/>
+             fill="url(#csi-star)" stroke="#ffd600" stroke-width="1.2" stroke-linejoin="round"/>
 
 </svg>
 </div>
